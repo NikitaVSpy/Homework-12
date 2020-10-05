@@ -34,7 +34,7 @@ result = result.split()
 
 skills = ['python', 'sql', 'git', 'linux', 'javascript', 'django', 'hive', 'sas', 'scrum', \
           'aosp', 'unix', 'ruby', 'php', 'nodejs', 'matlab', 'frontend', 'backend', 'web', \
-          'office', 'qt', 'pyqt', 'java', 'c+', 'c#', 'experience', 'r', 'pandas', 'numpy']
+          'office', 'qt', 'pyqt', 'java', 'c+', 'c#', 'r', 'pandas', 'numpy']
 
 dict = {}
 for i in result:
@@ -42,6 +42,19 @@ for i in result:
 
 list = list(dict.items())
 
+#Функция сортировки по второму элементу
+def sort_count(inputStr):
+    return inputStr[1]
+
+list = sorted(list, key=sort_count, reverse=True)
+
+
+n = 1
+print('Топ 10 навыков профессии и процент их встречаемости:')
+
 for i in range(len(list)):
     if list[i][0] in skills:
-       print(f'встречаемость:{list[i]}, т.е. в {round(list[i][1]*100/quantity_vacancies, 2)} % вакансий')
+       print(f'{n}) {list[i][0].capitalize()}: встречаемость: в {round(list[i][1]*100/quantity_vacancies, 2)} % вакансий')
+       n += 1
+    if n == 11:
+        break
